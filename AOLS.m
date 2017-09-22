@@ -1,5 +1,27 @@
 function [AOLS_index,AOLS_xhat,AOLS_time,AOLS_it,AOLS_res] = AOLS(A,y,k,L,thr)
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Estimate a sparse signal x from linear measurements(Real-valued) 
+%                          y = A*x
+% using Accelerated Orthogonal Least-Squares(AOLS)
+%
+% Input parameters
+% y	    : Measurement vector 
+% A	    : Coefficient matrix 
+% k	    : Sparsity level
+% L	    : Number of selected indices per iteration
+% thr   : Desired accuracy
+%
+% Output parameterss
+% AOLS_xhat	    : Estimated signal
+% AOLS_index    : Selected support set.
+% AOLS_it       : Number of iterations
+% AOLS_time     : CPU time
+% AOLS_res      : Final residual norm
+%
+% Written by Abolfazl Hashemi, August 2016
+% ECE department, UT Austin, Austin, TX, 78712, US 
+% Email: abolfazl@utexas.edu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 tic
 [n,m] = size(A);
 AOLS_xhat = zeros(m,1);
